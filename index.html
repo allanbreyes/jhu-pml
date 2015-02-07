@@ -59,18 +59,17 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </div>
 
 
-<pre><code>## Loading required package: lattice
-## Loading required package: ggplot2</code></pre>
 <div id="introduction" class="section level3">
 <h3>Introduction</h3>
 <p>Using devices such as Jawbone Up, Nike FuelBand, and Fitbit, it is now possible to collect a large amount of data about personal activity relatively inexpensively. These type of devices are part of the quantified self movement–a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech enthusiasts. One thing that people regularly do is quantify how much of a particular activity they do, but they rarely quantify how well they do it. Participants were asked to perform barbell lifts correctly and incorrectly in 5 different ways. In this project, the goal was to use data from accelerometers on the belt, forearm, arm, and dumbell of 6 participants to predict the manner in which they did their exercise.</p>
 </div>
-<div id="load-and-clean-data" class="section level3">
-<h3>Load and Clean Data</h3>
-<p>The preliminary step was to load and clean the data. I removed 100 columns which contained large occurrences of <code>NA</code> values (e.g. blank, zero-division errors, etc.). I also removed the first 7 columns, which did not contain relevant feature data.</p>
+<div id="inspecting-and-cleaning-the-dataset" class="section level3">
+<h3>Inspecting and Cleaning the Dataset</h3>
+<p>The dataset came pre-partitioned into 19622 training set records and 20 test set records. Of the 160 variables, I removed 100, which contained large occurrences of <code>NA</code> values (e.g. blank, zero-division errors, etc.). I also removed the first 7 variables, which did not contain relevant feature data (e.g. user names and timestamps).</p>
 </div>
-<div id="machine-learning-algorithms" class="section level3">
-<h3>Machine Learning Algorithms</h3>
+<div id="applying-machine-learning-algorithms" class="section level3">
+<h3>Applying Machine Learning Algorithms</h3>
+<p>I used two classifiers: stochastic gradient boosting and random forest. The random forest took noticeably longer to compute, but had perfect accuracy and performance. Parameters used were 3-fold cross validated resampling (60/40 split). With such high performance, I expected the results on the 20 records in the test set to be near-perfect accuracy.</p>
 <pre class="r"><code># control parameters
 cvTrainControl = trainControl(method = &quot;cv&quot;, number = 3,
                               repeats = 1, p = 0.6)
@@ -82,10 +81,6 @@ cvTrainControl = trainControl(method = &quot;cv&quot;, number = 3,
 # random forest classifier
 clfRandomForest &lt;- train(classe ~ ., data = training,
                          method = &quot;rf&quot;, trControl = cvTrainControl)</code></pre>
-<pre><code>## Loading required package: randomForest
-## randomForest 4.6-10
-## Type rfNews() to see new features/changes/bug fixes.</code></pre>
-<p>I used two classifiers: stochastic gradient boosting and random forest. The random forest took noticeably longer to compute, but had near perfect accuracy.</p>
 <pre><code>## Random Forest 
 ## 
 ## 19622 samples
@@ -140,9 +135,7 @@ clfRandomForest &lt;- train(classe ~ ., data = training,
 </div>
 <div id="predicting-labels-in-the-test-data" class="section level3">
 <h3>Predicting Labels in the Test Data</h3>
-<p>Using the random forest classifier, I made the following predictions in the testing data. Results were exported to <code>.txt</code> files and submitted with 100% accuracy.</p>
-<pre class="r"><code>predictions = predict(clfRandomForest, testing)
-predictions</code></pre>
+<p>Using the random forest classifier, I made the following predictions in the testing data. Results were exported to <code>.txt</code> files and submitted with 100% accuracy!</p>
 <pre><code>##  [1] B A B A A E D B A A B C B A E E A B B B
 ## Levels: A B C D E</code></pre>
 </div>
