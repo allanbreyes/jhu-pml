@@ -75,34 +75,34 @@ cvTrainControl = trainControl(method = &quot;cv&quot;, number = 3,
                               repeats = 1, p = 0.6)
 
 # gradient boosting classifier
-#clfGbm          &lt;- train(classe ~ ., data = training,
-#                         method = &quot;gbm&quot;, trControl = cvTrainControl)
+clfGbm          &lt;- train(classe ~ ., data = training,
+                         method = &quot;gbm&quot;, trControl = cvTrainControl)
 
 # random forest classifier
 clfRandomForest &lt;- train(classe ~ ., data = training,
                          method = &quot;rf&quot;, trControl = cvTrainControl)</code></pre>
-<pre><code>## Random Forest 
-## 
+<pre><code>## Random Forest
+##
 ## 19622 samples
 ##    53 predictors
-##     5 classes: 'A', 'B', 'C', 'D', 'E' 
-## 
+##     5 classes: 'A', 'B', 'C', 'D', 'E'
+##
 ## No pre-processing
-## Resampling: Cross-Validated (3 fold) 
-## 
-## Summary of sample sizes: 13080, 13082, 13082 
-## 
+## Resampling: Cross-Validated (3 fold)
+##
+## Summary of sample sizes: 13080, 13082, 13082
+##
 ## Resampling results across tuning parameters:
-## 
-##   mtry  Accuracy   Kappa      Accuracy SD  Kappa SD   
+##
+##   mtry  Accuracy   Kappa      Accuracy SD  Kappa SD
 ##    2    0.9938845  0.9922636  0.001474138  0.001865393
 ##   27    0.9972480  0.9965189  0.001102486  0.001394672
 ##   53    0.9945981  0.9931668  0.001994280  0.002523079
-## 
+##
 ## Accuracy was used to select the optimal model using  the largest value.
 ## The final value used for the model was mtry = 27.</code></pre>
 <pre><code>## Confusion Matrix and Statistics
-## 
+##
 ##           Reference
 ## Prediction    A    B    C    D    E
 ##          A 5580    0    0    0    0
@@ -110,19 +110,19 @@ clfRandomForest &lt;- train(classe ~ ., data = training,
 ##          C    0    0 3422    0    0
 ##          D    0    0    0 3216    0
 ##          E    0    0    0    0 3607
-## 
+##
 ## Overall Statistics
-##                                      
-##                Accuracy : 1          
+##
+##                Accuracy : 1
 ##                  95% CI : (0.9998, 1)
-##     No Information Rate : 0.2844     
-##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16  
-##                                      
-##                   Kappa : 1          
-##  Mcnemar's Test P-Value : NA         
-## 
+##     No Information Rate : 0.2844
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16
+##
+##                   Kappa : 1
+##  Mcnemar's Test P-Value : NA
+##
 ## Statistics by Class:
-## 
+##
 ##                      Class: A Class: B Class: C Class: D Class: E
 ## Sensitivity            1.0000   1.0000   1.0000   1.0000   1.0000
 ## Specificity            1.0000   1.0000   1.0000   1.0000   1.0000
