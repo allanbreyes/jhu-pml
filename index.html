@@ -69,7 +69,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </div>
 <div id="applying-machine-learning-algorithms" class="section level3">
 <h3>Applying Machine Learning Algorithms</h3>
-<p>I used two classifiers: stochastic gradient boosting and random forest. The random forest took noticeably longer to compute, but had perfect accuracy and performance. Parameters used were 3-fold cross validated resampling (60/40 split). With such high performance, I expected the results on the 20 records in the test set to be near-perfect accuracy.</p>
+<p>I used two classifiers: stochastic gradient boosting and random forest. The random forest took noticeably longer to compute, but had perfect accuracy and performance. With such high performance, I expected the results on the 20 records in the test set to be near-perfect accuracy.</p>
 <pre class="r"><code># control parameters
 cvTrainControl = trainControl(method = &quot;cv&quot;, number = 3,
                               repeats = 1, p = 0.6)

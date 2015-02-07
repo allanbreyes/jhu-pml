@@ -33,7 +33,7 @@ cleanData <- function(df) {
                                           # num_window (7 columns)
   columnsToRemove <- c(naColumns, administrativeColumns)
   df <- df[, -which(names(df) %in% columnsToRemove)]
-  
+
   return(df)
 }
 
@@ -47,7 +47,7 @@ The dataset came pre-partitioned into 19622 training set records and 20 test set
 
 ### Applying Machine Learning Algorithms
 
-I used two classifiers: stochastic gradient boosting and random forest.  The random forest took noticeably longer to compute, but had perfect accuracy and performance.  Parameters used were 3-fold cross validated resampling (60/40 split).  With such high performance, I expected the results on the 20 records in the test set to be near-perfect accuracy.
+I used two classifiers: stochastic gradient boosting and random forest.  The random forest took noticeably longer to compute, but had perfect accuracy and performance.  With such high performance, I expected the results on the 20 records in the test set to be near-perfect accuracy.
 
 ```{r results='hide', message=FALSE}
 # control parameters
