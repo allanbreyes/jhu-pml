@@ -1,3 +1,4 @@
-.Rhistory
-.RData
-pml_cache
+*
+
+!.gitignore
+!index.html
